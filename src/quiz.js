@@ -44,3 +44,4 @@ class Quiz {
         return this.currentQuestionIndex === this.questions.length;
     }
 }
+
