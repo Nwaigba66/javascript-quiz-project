@@ -133,20 +133,23 @@ document.addEventListener("DOMContentLoaded", () => {
       // Hint 3: You can use the `element.appendChild()` method to append an element to the choices container.
       // Hint 4: You can use the `element.innerText` property to set the inner text of an element.
       
-      questions.choices.forEach((choice) => {
-        const radioButton = document.createElement('input');
-        radioButton.type = 'radio';
-        radioButton.name = 'choice';
-        radioButton.value = choice;
-
-        const label = document.createElement('label');
+      question.choices.forEach((choice) => {
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "choice";
+        radio.value = choice;
+        choiceContainer.appendChild(radio);
+  
+        const label = document.createElement("label");
         label.innerText = choice;
         choiceContainer.appendChild(label);
+
+        const br = document.createElement("br");
+        choiceContainer.appendChild(br);
       });
-  }
+    }
 
 
-  
   function nextButtonHandler () {
     let selectedAnswer; // A variable to store the selected answer value
 
@@ -154,14 +157,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // YOUR CODE HERE:
     //
     // 1. Get all the choice elements. You can use the `document.querySelectorAll()` method.
-    const choices = document.querySelectorAll('input=choice');
+    const choices = document.querySelectorAll('input[name=choice]');
+    
 
 
     // 2. Loop through all the choice elements and check which one is selected
       // Hint: Radio input elements have a property `.checked` (e.g., `element.checked`).
       //  When a radio input gets selected the `.checked` property will be set to true.
       //  You can use check which choice was selected by checking if the `.checked` property is true.
-      
+    
+
       choices.forEach((choice) => {
         if (choice.checked) {
           selectedAnswer = choice.value;
