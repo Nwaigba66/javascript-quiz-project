@@ -235,8 +235,8 @@ timer = setInterval(() => {
   /* DAY 4: Clear the timer interval and show the results when the time runs out */
   // If the time has run out, show the results
   if (quiz.timeRemaining <= 0) {
-    clearInterval(timer);
+    quiz.timeRemaining = quizDuration
     showResults();
   }
-}, 1000);
+}, 100);
 })
