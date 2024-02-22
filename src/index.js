@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
 
   // Display the time remaining in the time remaining container
-  const timeRemainingContainer = document.getElementById("timeRemaining");
+  let timeRemainingContainer = document.getElementById("timeRemaining");
   timeRemainingContainer.innerText = `${minutes}:${seconds}`;
 
   // Show first question
@@ -204,15 +204,39 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 
+
 const buttonRestart = document.getElementById("restartButton");
 
 buttonRestart.addEventListener("click", function quizRestart() {
   endView.style.display = "none"; // Hide the endView
   quizView.style.display = "block"; // Show the quiz view
+  quiz.timeRemaining = quizDuration
   quiz.currentQuestionIndex = 0;
   quiz.correctAnswers = 0;
   quiz.shuffleQuestions();
   showQuestion();
+ 
+  
   
 });
+
+const timeRemainingCounter = document.getElementById("timeRemaining");
+
+timer = setInterval(() => {
+  // Convert the time remaining in seconds to minutes and seconds -- padStart is using to ad a extra 0 when the seconds and minutes are below 10.
+ const minutes = Math.floor(quiz.timeRemaining / 60).toString().padStart(2, "0");
+ const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
+
+
+  timeRemainingCounter.innerText = `${minutes}:${seconds}`;
+
+  quiz.timeRemaining--;
+
+  /* DAY 4: Clear the timer interval and show the results when the time runs out */
+  // If the time has run out, show the results
+  if (quiz.timeRemaining <= 0) {
+    clearInterval(timer);
+    showResults();
+  }
+}, 1000);
 })
