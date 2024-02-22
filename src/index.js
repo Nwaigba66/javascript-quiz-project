@@ -230,9 +230,8 @@ timer = setInterval(() => {
 
   timeRemainingCounter.innerText = `${minutes}:${seconds}`;
 
-  quiz.timeRemaining--;
+  quiz.timeRemaining --;
 
-  /* DAY 4: Clear the timer interval and show the results when the time runs out */
   // If the time has run out will show the results and we set up the clock to 02:00 again
   if (quiz.timeRemaining <= 0) {
     quiz.timeRemaining = quizDuration
