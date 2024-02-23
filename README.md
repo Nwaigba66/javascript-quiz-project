@@ -1,5 +1,5 @@
 # Project: JavaScript Quiz
 
 #Collaborators:
-Gloria
-Jorge
+##Gloria
+##Jorge
