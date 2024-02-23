@@ -168,7 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
       choices.forEach((choice) => {
+
         if (choice.checked) {
+          
           selectedAnswer = choice.value;
         }
       });
@@ -190,9 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function showResults() {
-
-    // YOUR CODE HERE:
-    //
     // 1. Hide the quiz view (div#quizView)
     quizView.style.display = "none";
 
